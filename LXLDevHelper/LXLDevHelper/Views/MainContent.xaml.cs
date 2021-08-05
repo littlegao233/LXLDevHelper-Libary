@@ -12,7 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-
+using System.Collections.ObjectModel
 namespace LXLDevHelper.Views
 {
     /// <summary>
@@ -20,9 +20,28 @@ namespace LXLDevHelper.Views
     /// </summary>
     public partial class MainContent : UserControl
     {
+        public static ViewModels.MainContentViewModel Data=new();
+        public ViewModels.LXLFunction CurrentFunction = new();
         public MainContent()
         {
             InitializeComponent();
+            //ClassListBox.ItemsSource
+            DataContext = Data;
+        }
+
+        private void SaveButton_Click(object sender, RoutedEventArgs e)
+        {
+            ModernWpf.MessageBox.Show(Newtonsoft.Json.JsonConvert.SerializeObject(Data));
+        }
+        private void LoadButton_Click(object sender, RoutedEventArgs e)
+        {
+            ((Button)sender).IsEnabled = false;
+        }
+
+        private void ClassListBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            //FuncListBox.ItemsSource = CurrentFunction;
+            ((ViewModels.MainContentViewModel)DataContext).CurrentFunc = (ObservableCollection<ViewModels.LXLFunction>)ClassListBox.SelectedItem;
         }
     }
 }

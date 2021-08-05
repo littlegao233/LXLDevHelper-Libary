@@ -9,7 +9,7 @@
         prism:ViewModelLocator.AutoWireViewModel="True"
         mc:Ignorable="d"
         WindowStartupLocation="CenterScreen"
-        Title="MainWindow" 
+        Title="LXL接口编辑器" 
         Height="450" 
         Width="800">
     <Grid>

@@ -31,6 +31,5 @@ namespace LXLDevHelper.Views
             });
             //ModernWpf.MessageBox.Show("test");
         }
-
     }
 }
